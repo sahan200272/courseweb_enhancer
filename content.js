@@ -1,5 +1,5 @@
 
- // Courseweb UX Enhancer - Main Content Script
+ // Courseweb UI & UX Enhancer - Main Content Script
  // This script runs after the DOM is fully loaded to clean up and enhance the interface.
 
 console.log(" Courseweb UX Enhancer initialized.");
