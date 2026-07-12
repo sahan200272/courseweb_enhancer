@@ -5,11 +5,15 @@
 console.log(" Courseweb UX Enhancer initialized.");
 
 window.addEventListener("load", () => {
-  // 1. Target notice sections and their main text containers
+
+  // Target notice sections and their main text containers
   enhanceNoticeContainers();
 
   // New enhancement for PDFs/Resources
   enhanceResourceCards();
+
+  // New enhancement for tables
+  enhanceTablesAndFilters();
   
 });
 
@@ -48,5 +52,54 @@ function enhanceResourceCards() {
       // Add a utility class if needed for deep customization later
       activityItem.classList.add("cw-enhanced-resource-card");
     }
+  });
+}
+
+// Modernizes all HTML tables and injects a real-time live filtering search bar above them.
+
+function enhanceTablesAndFilters() {
+  const tables = document.querySelectorAll("table");
+  
+  if (tables.length === 0) return;
+
+  console.log(`Found ${tables.length} tables to optimize.`);
+
+  tables.forEach((table, index) => {
+
+    // Create a wrapper and search input field
+    const controlsWrapper = document.createElement("div");
+    controlsWrapper.classList.add("cw-table-controls-wrapper");
+
+    const searchInput = document.createElement("input");
+    searchInput.type = "text";
+    searchInput.placeholder = "🔍 Search registration no, stream, or details...";
+    searchInput.classList.add("cw-table-search-input");
+    
+    controlsWrapper.appendChild(searchInput);
+    
+    // Inject the search bar immediately before the table element
+    table.parentNode.insertBefore(controlsWrapper, table);
+
+    // Setup real-time filtering event listener
+    searchInput.addEventListener("input", (e) => {
+      const query = e.target.value.toLowerCase().trim();
+      
+      // Grab all data rows inside the body (skipping header row if structured inside standard tr)
+      const rows = table.querySelectorAll("tr");
+
+      rows.forEach((row) => {
+        // Skip checking if row contains table header cells (th)
+        if (row.querySelector("th")) return;
+
+        const rowText = row.innerText.toLowerCase();
+
+        // Toggle visibility class based on matches
+        if (rowText.includes(query)) {
+          row.classList.remove("cw-row-hidden");
+        } else {
+          row.classList.add("cw-row-hidden");
+        }
+      });
+    });
   });
 }
