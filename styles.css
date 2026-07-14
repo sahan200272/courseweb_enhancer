@@ -123,3 +123,75 @@ table tr:hover {
 .cw-row-hidden {
     display: none !important;
 }
+
+
+/* The main container wrapper for each group block */
+ul.list-group {
+    padding-left: 0 !important;
+    margin: 25px 0 40px 0 !important;
+    background: transparent !important;
+    border: none !important;
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important; /* Makes it a responsive grid layout */
+    gap: 16px !important;
+}
+
+/* Individual list rows transformed into modern grid cards */
+ul.list-group li {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 8px !important;
+    padding: 16px 20px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02) !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Differentiate the first list container (Departments) vs the second list container (Degrees) */
+ul.list-group[data-cw-list-index="1"] li {
+    border-left: 4px solid #0f172a !important; /* Dark Slate border for main administrative divisions */
+}
+
+ul.list-group[data-cw-list-index="2"] li {
+    border-left: 4px solid #1a73e8 !important; /* Modern blue border for degree pathways */
+}
+
+/* Card Hover Animations */
+ul.list-group li:hover {
+    transform: translateY(-2px) !important;
+    background-color: #ffffff !important;
+    border-color: #cbd5e1 !important;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06) !important;
+    cursor: pointer;
+}
+
+/* Ensure the textual navigation link scales inside the card boundary */
+ul.list-group li a {
+    color: #334155 !important; /* Changed from thin orange to high-contrast readable dark text */
+    font-size: 0.98rem !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    width: 100% !important;
+    display: block !important;
+}
+
+/* Change link text color on card hover */
+ul.list-group li:hover a {
+    color: #1a73e8 !important;
+}
+
+/* Hide or restyle Moodle's default right-pointing dynamic icon */
+ul.list-group li img, 
+ul.list-group li i,
+ul.list-group li span.fa-play {
+    color: #94a3b8 !important;
+    font-size: 0.8rem !important;
+    transition: transform 0.2s ease !important;
+}
+
+ul.list-group li:hover span.fa-play {
+    transform: translateX(3px) !important; /* Smooth micro-interaction on hover */
+    color: #1a73e8 !important;
+}

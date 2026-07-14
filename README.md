@@ -22,7 +22,7 @@ A lightweight, client-side browser extension built using Manifest V3 to optimize
 https://github.com/sahan200272/courseweb_enhancer.git
 ```
 
-2. Open Google Chrome (or any Chromium browser like Edge/Brave) and navigate to chrome://extensions/
+2. Open Google Chrome (or any Chromium browser like Edge/Brave) and navigate to ```bash chrome://extensions/ ```
 
 3. Toggle the Developer mode switch in the top-right corner to ON.
 
