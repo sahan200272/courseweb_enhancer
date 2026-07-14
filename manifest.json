@@ -6,7 +6,9 @@
   "permissions": [],
   "content_scripts": [
     {
-      "matches": ["https://courseweb.sliit.lk/course/view.php?id=*"],
+      "matches": ["https://courseweb.sliit.lk/course/view.php?id=*",
+                "https://courseweb.sliit.lk/course/section.php?id=*"
+    ],
       "js": ["content.js"],
       "css": ["styles.css"]
     }

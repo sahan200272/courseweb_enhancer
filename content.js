@@ -1,4 +1,3 @@
-
  // Courseweb UI & UX Enhancer - Main Content Script
  // This script runs after the DOM is fully loaded to clean up and enhance the interface.
 
@@ -14,6 +13,9 @@ window.addEventListener("load", () => {
 
   // New enhancement for tables
   enhanceTablesAndFilters();
+
+  // New enhancement for lists
+  enhanceListGroups();
   
 });
 
@@ -100,6 +102,33 @@ function enhanceTablesAndFilters() {
           row.classList.add("cw-row-hidden");
         }
       });
+    });
+  });
+}
+
+/**
+ * Modernizes multiple unorganized list groups across Courseweb sections
+ */
+function enhanceListGroups() {
+  const listGroups = document.querySelectorAll("ul.list-group");
+  
+  if (listGroups.length === 0) return;
+
+  console.log(`📋 Optimizing ${listGroups.length} independent list groups.`);
+
+  listGroups.forEach((list, index) => {
+    // Inject a data-attribute identifier (1 for upper layout block, 2 for lower block)
+    list.setAttribute("data-cw-list-index", index + 1);
+    
+    // Add click forwarding so clicking anywhere on the wrapper card clicks the child navigation link
+    const listItems = list.querySelectorAll("li");
+    listItems.forEach(item => {
+      const anchor = item.querySelector("a");
+      if (anchor) {
+        item.addEventListener("click", () => {
+          anchor.click();
+        });
+      }
     });
   });
 }
